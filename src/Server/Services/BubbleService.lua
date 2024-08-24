@@ -14,13 +14,11 @@ function BubbleService:KnitStart()
 end
 
 function BubbleService:Bubble(player: Player): nil
-    warn("Bubbling player: " .. player.Name)
     self._data:IncrementValue(player, "Bubbles", 1)
 	return
 end
 
 function BubbleService.Client:Bubble(player: Player): nil
-    warn("Client bubble")
 	return self.Server:Bubble(player)
 end
 
