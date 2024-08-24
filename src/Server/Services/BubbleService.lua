@@ -14,6 +14,7 @@ function BubbleService:KnitStart()
 end
 
 function BubbleService:Bubble(player: Player): nil
+  warn("HI?")
     self._data:IncrementValue(player, "Bubbles", 1)
 	return
 end

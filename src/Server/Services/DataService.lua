@@ -36,7 +36,7 @@ local DataService = Knit.CreateService {
 }
 
 local ProfileStore = ProfileService.GetProfileStore(
-	"PlayerTestData#16",
+	"PlayerTestData#17",
 	PROFILE_TEMPLATE
 )
 
@@ -258,7 +258,7 @@ function DataService:SetValue<T>(player: Player, name: string, value: T): Promis
 
 		task.spawn(function(): nil
 			local old = self:GetValue(player, name)
-			if name ~= "Eggs" and name ~= "Strength" then
+			if name ~= "Eggs" and name ~= "Bubbles" then
 				profile:Reconcile()
 			end
 			if type(value) == "number" then
@@ -282,6 +282,11 @@ function DataService:SetValue<T>(player: Player, name: string, value: T): Promis
 		end
 		
 		local data = profile.Data
+
+		task.spawn(function()
+			UpdateLeaderstats(player)
+		end)
+
 		if data[name] ~= nil then
 			data[name] = value
 		elseif data.leaderstats[name] ~= nil then
@@ -290,7 +295,6 @@ function DataService:SetValue<T>(player: Player, name: string, value: T): Promis
 			return reject(`Could not find key "{name}" in profile while setting {player.DisplayName}'s data.`)
 		end
 		
-		UpdateLeaderstats(player)
 		self:DataUpdate(player, name, value)
 		return resolve()
 	end)

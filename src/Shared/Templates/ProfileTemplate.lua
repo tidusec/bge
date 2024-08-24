@@ -4,7 +4,8 @@ local PROFILE_TEMPLATE = {
 	leaderstats = {
 		Bubbles = 0,
 		Rebirths = 0,
-		Eggs = 0
+		Eggs = 0,
+		Coins = 0,
 	},
 	
 	Pets = {
@@ -14,8 +15,6 @@ local PROFILE_TEMPLATE = {
 		RobuxPurchasedPets = {},
 		Equipped = {}
 	},
-
-	Bubbles = 0,
 	
 	Timers = {},
 	ClaimedRewardsToday = {},
