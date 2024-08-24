@@ -63,7 +63,7 @@ local function GetProfile(player: Player): Promise
 
 		repeat
 			profile = PROFILE_CACHE[player]
-			task.wait(0.05)
+			task.wait(1)
 		until (profile ~= nil and profile.Loaded)
 		if not profile or not profile.Loaded then
 			player:Kick("There was a data error, sorry.")
