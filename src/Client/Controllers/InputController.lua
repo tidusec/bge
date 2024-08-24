@@ -46,25 +46,19 @@ local function forEachComponent(componentName: string, actionName: string): nil
 	return
 end
 
-local function liftDumbell(): nil
-	local dumbell = Knit.GetService("DumbellService")
-	return dumbell:Lift()
+local function bubble(): nil
+	local BubbleService = Knit.GetService("BubbleService")
+	return BubbleService:Bubble()
 end
 
 local InputTypeMap = {
 	MouseButton1 = function(): nil
-		forEachComponent("PunchingBag", "Punch")
-		forEachComponent("SitupBench", "Situp")
-		forEachComponent("EnemyFighting", "Attack")
-		task.spawn(liftDumbell)
+		task.spawn(bubble)
 		return
 	end,
 
 	Touch = function(): nil
-		forEachComponent("PunchingBag", "Punch")
-		forEachComponent("SitupBench", "Situp")
-		forEachComponent("EnemyFighting", "Attack")
-		task.spawn(liftDumbell)
+		task.spawn(bubble)
 		return
 	end,
 
@@ -100,13 +94,13 @@ function InputController:KnitStart(): nil
 				destroyAutoTrainClicker()
 			end
 			destroyAutoTrainClicker = scheduler:Every("0.33 seconds", function()
-				task.spawn(liftDumbell)
+				task.spawn(bubble)
 			end)
 			return
 		end
 		
 		data.DataUpdated:Connect(function(key, on: boolean): nil
-			if key ~= "AutoTrain" then return end
+			if key ~= "AutoBubble" then return end
 			if not on then
 				if destroyAutoTrainClicker then
 					destroyAutoTrainClicker()

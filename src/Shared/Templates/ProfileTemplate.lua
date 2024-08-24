@@ -2,7 +2,7 @@
 --!strict
 local PROFILE_TEMPLATE = {	
 	leaderstats = {
-		Strength = 0,
+		Bubbles = 0,
 		Rebirths = 0,
 		Eggs = 0
 	},
@@ -14,18 +14,13 @@ local PROFILE_TEMPLATE = {
 		RobuxPurchasedPets = {},
 		Equipped = {}
 	},
+
+	Bubbles = 0,
 	
 	Timers = {},
 	ClaimedRewardsToday = {},
 	FirstJoinToday = tick(),
 	TimePlayedToday = 0,
-
-	DefeatedBosses = {},
-	Wins = 0,
-
-	PunchStrength = 0,
-	BicepsStrength = 0,
-	AbsStrength = 0,
 
 	ProductsLog = {},
 	GamePasses = {},
@@ -33,9 +28,7 @@ local PROFILE_TEMPLATE = {
 	MegaQuestProgress = {},
 	UpdatedQuestProgress = false,
 	
-	AutoFight = false,
-	AutoTrain = false,
-	AutoRebirth = false,
+	AutoBubble = false,
 
 	RebirthBoosts = {
 		Wins = 100,
@@ -49,7 +42,6 @@ local PROFILE_TEMPLATE = {
 		LowQuality = false
 	},
 
-	Map = 0,
 	TotalPlaytime = 0,
 
 	Tutorial = false,
@@ -67,7 +59,6 @@ local PROFILE_TEMPLATE = {
 		Current = "",
 		Owned = {}
 	},
-	Streak = 0,
 }
 
 return PROFILE_TEMPLATE

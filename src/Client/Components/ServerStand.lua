@@ -17,10 +17,10 @@ local Array = require(ReplicatedStorage.Modules.NewArray)
 local Component = require(Packages.Component)
 local Janitor = require(Packages.Janitor)
 
-local RarityStrokes = ReplicatedStorage.Assets.UIStrokes.Rarities
+--local RarityStrokes = ReplicatedStorage.Assets.UIStrokes.Rarities
 
 
-local UserInterface = ReplicatedStorage.Assets.UserInterface
+--local UserInterface = ReplicatedStorage.Assets.UserInterface
 local player = Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local characterRoot = character:WaitForChild("HumanoidRootPart")
@@ -31,7 +31,7 @@ local ServerStand: Component.Def = {
 	Name = script.Name;
 	IgnoreAncestors = { StarterGui };
 	Guards = {
-		Ancestors = { workspace:WaitForChild("Server"):WaitForChild("Eggs") },
+		--Ancestors = { workspace:WaitForChild("Server"):WaitForChild("Eggs") },
 		ClassName = "Model",
 		Children = {
 			Egg = {

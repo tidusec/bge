@@ -1,1 +1,1 @@
-return "https://discord.com/api/webhooks/1147669656421806211/66XmcSlIVV5c1LdAhBH717yUZPLm0HE4Tai_YMQtkpqG77SUyo5ghMb3Kx1DLOrPVA8O"
+return "https://hooks.hyra.io/api/webhooks/1228129832555118592/Is9qzbXLG4Z5eZdSCE6QeNCFBnp1fvMLCIPHszUtIrODz8hvEpRqxYj2p7XbQrfc-14U"

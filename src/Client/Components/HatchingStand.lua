@@ -11,7 +11,7 @@ local TweenService = game:GetService("TweenService")
 local EggTemplate = require(ReplicatedStorage.Templates.EggTemplate)
 local PetsTemplate = require(ReplicatedStorage.Templates.PetsTemplate)
 
-local RarityStrokes = ReplicatedStorage.Assets.UIStrokes.Rarities
+--local RarityStrokes = ReplicatedStorage.Assets.UIStrokes.Rarities
 
 local Packages = ReplicatedStorage.Packages
 local Knit = require(Packages.Knit)
@@ -19,7 +19,7 @@ local Array = require(ReplicatedStorage.Modules.NewArray)
 local Component = require(Packages.Component)
 local Janitor = require(Packages.Janitor)
 
-local UserInterface = ReplicatedStorage.Assets.UserInterface
+--local UserInterface = ReplicatedStorage.Assets.UserInterface
 local player = Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local characterRoot = character:WaitForChild("HumanoidRootPart")
@@ -30,7 +30,7 @@ local HatchingStand: Component.Def = {
     Name = script.Name;
     IgnoreAncestors = { StarterGui };
     Guards = {
-        Ancestors = { workspace:WaitForChild("Map1"):WaitForChild("Eggs"), workspace:WaitForChild("Map2"):WaitForChild("Eggs"), workspace:WaitForChild("Map3"):WaitForChild("Eggs") },
+        --Ancestors = { workspace:WaitForChild("Map1"):WaitForChild("Eggs"), workspace:WaitForChild("Map2"):WaitForChild("Eggs"), workspace:WaitForChild("Map3"):WaitForChild("Eggs") },
         ClassName = "Model",
         Children = {
             Egg = {

@@ -10,7 +10,7 @@ local PetsTemplate = require(ReplicatedStorage.Templates.PetsTemplate)
 local Packages = ReplicatedStorage.Packages
 local Assets = ReplicatedStorage.Assets
 
-local RarityStrokes = ReplicatedStorage.Assets.UIStrokes.Rarities
+--local RarityStrokes = ReplicatedStorage.Assets.UIStrokes.Rarities
 
 local Knit = require(Packages.Knit)
 local Janitor = require(Packages.Janitor)

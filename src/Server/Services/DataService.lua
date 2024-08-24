@@ -5,6 +5,8 @@ local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 local ServerScriptService = game:GetService("ServerScriptService")
+local AnalyticsService = game:GetService("AnalyticsService")
+
 
 local Modules = ServerScriptService.Server.Modules
 local Packages = ReplicatedStorage.Packages
@@ -108,31 +110,9 @@ local function UpdateLeaderstats(player: Player): nil
 		if not profile then return end
 
 		local data = profile.Data
-		local leaderstats = player:WaitForChild("leaderstats")
+		local leaderstats = player:WaitForChild("leaderstats");
 
-		local punchStrength = data.PunchStrength
-		local bicepsStrength = data.BicepsStrength
-		local absStrength = data.AbsStrength
-
-		local totalStrength = punchStrength + bicepsStrength + absStrength
-
-		if totalStrength > 10000000000 then
-    		local arithmeticMean = totalStrength / 3
-
-    		local geometricMean = (punchStrength * bicepsStrength * absStrength) ^ (1/3)
-
-    		local harmonicMean = 3 / ((1 / punchStrength) + (1 / bicepsStrength) + (1 / absStrength))
-
-    		--// make it a combination of all 3, making it so that the player has to train all 3 to get the best strength
-    		local calculatedStrength = (arithmeticMean + 3 * geometricMean + 2 * harmonicMean) / 6 * 3
-    
-    		-- Ensure the result is always over 50k
-    		data.leaderstats.Strength = math.max(50000, math.floor(calculatedStrength * 100) / 100)
-		else
-    		data.leaderstats.Strength = totalStrength
-		end
-
-		(leaderstats :: any).Strength.Value = abbreviate(data.leaderstats.Strength);
+		(leaderstats :: any).Bubbles.Value = abbreviate(data.leaderstats.Bubbles);
 		(leaderstats :: any).Eggs.Value = abbreviate(data.leaderstats.Eggs);
 		(leaderstats :: any).Rebirths.Value = abbreviate(data.leaderstats.Rebirths)
 		return
@@ -146,7 +126,6 @@ function DataService:KnitStart()
 	self._boosts = Knit.GetService("BoostService")
 	self._gamepass = Knit.GetService("GamepassService")
 	self._quests = Knit.GetService("QuestService")
-	self._ga = Knit.GetService("GameAnalyticsService")
 	
 	Players.PlayerAdded:Connect(function(player: Player): nil
 		return self:OnPlayerAdded(player)
@@ -296,9 +275,9 @@ function DataService:SetValue<T>(player: Player, name: string, value: T): Promis
 			local old = self:GetValue(player, name)
 			if old == value then return resolve() end
 			if value < old then
-				self._ga:RegisterCurrencySpent(player.UserId, name, old - value)
+				AnalyticsService:LogEconomyEvent(player, Enum.AnalyticsEconomyFlowType.Sink, name, old - value, value, Enum.AnalyticsEconomyTransactionType.Gameplay.Name)
 			else
-				self._ga:RegisterCurrencyAdded(player.UserId, name, value - old)
+				AnalyticsService:LogEconomyEvent(player, Enum.AnalyticsEconomyFlowType.Source, name, value - old, value, Enum.AnalyticsEconomyTransactionType.Gameplay.Name)
 			end
 		end
 		

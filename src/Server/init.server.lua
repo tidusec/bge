@@ -6,9 +6,10 @@ local Knit = require(Packages.Knit)
 local Component = require(Packages.Component)
 
 Knit.AddServices(script.Services)
+warn("HI>")
 Component.LoadFolder(script.Components)
 Knit.Start({ServicePromises  = false}):andThen(function()
-	Component.StartComponents()
+	--Component.StartComponents()
 	print("Knit started on server")
 end):catch(warn)
 

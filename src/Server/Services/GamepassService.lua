@@ -6,7 +6,7 @@ local ServerScriptService = game:GetService("ServerScriptService")
 local HttpService = game:GetService("HttpService")
 
 local AssertPlayer = require(ServerScriptService.Server.Modules.AssertPlayer)
-local trim = require(ReplicatedStorage.Assets.Modules.Trim)
+local trim = require(ReplicatedStorage.Assets.Modules.trim)
 
 local Packages = ReplicatedStorage.Packages
 local Knit = require(Packages.Knit)
